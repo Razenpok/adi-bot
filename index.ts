@@ -38,7 +38,7 @@ async function checkForumInactivity() {
         if (!thread.appliedTags.includes('Pending')) {
           continue;
         }
-        let reminder = `<@\${${pingId}}> Take a look at this thread, it's been inactive for a while :dread:`;
+        let reminder = `<@&${pingId}> Take a look at this thread, it's been inactive for a while :dread:`;
         await thread.messages.fetch({ limit: 1 });
         const lastMessage = thread.lastMessage;
         if (!lastMessage) {
