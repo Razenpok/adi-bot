@@ -16,7 +16,7 @@ const bot = new Client({
 
 const serverId = '1183243037430796339';
 const forumId = '1372428934737563759';
-const pingId = '313798314371842058';
+const pingId = '1390741938453348422';
 
 const MILLIS_IN_7_DAYS = 7 * 24 * 60 * 60 * 1000;
 
