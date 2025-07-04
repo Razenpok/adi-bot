@@ -18,7 +18,9 @@ const serverId = '1183243037430796339';
 const forumId = '1372428934737563759';
 const pingId = '1390741938453348422';
 
-const MILLIS_IN_7_DAYS = 7 * 24 * 60 * 60 * 1000;
+const MILLIS_IN_A_DAY = 24 * 60 * 60 * 1000;
+const REMIND_AFTER_DAYS = 2;
+const REMIND_AFTER_MILLIS = REMIND_AFTER_DAYS * MILLIS_IN_A_DAY;
 
 async function checkForumInactivity() {
   const now = Date.now();
@@ -40,12 +42,12 @@ async function checkForumInactivity() {
         await thread.messages.fetch({ limit: 1 });
         const lastMessage = thread.lastMessage;
         if (!lastMessage) {
-          if (now - thread.createdTimestamp! >= MILLIS_IN_7_DAYS) {
+          if (now - thread.createdTimestamp! >= REMIND_AFTER_MILLIS) {
             await thread.send(reminder);
           }
           continue;
         }
-        if (now - lastMessage.createdTimestamp >= MILLIS_IN_7_DAYS) {
+        if (now - lastMessage.createdTimestamp >= REMIND_AFTER_MILLIS) {
           await thread.send(reminder);
         }
       }
