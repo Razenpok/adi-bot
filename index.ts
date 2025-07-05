@@ -34,8 +34,12 @@ async function checkForumInactivity() {
       }
       const forum = channel as ForumChannel;
       const active = await forum.threads.fetchActive();
+      const pendingTag = forum.availableTags.find(tag => tag.name.toLowerCase() === 'pending');
+      if (!pendingTag) {
+        throw new Error(`Pending tag not found in ${forum.name}`);
+      }
       for (const thread of active.threads.values()) {
-        if (!thread.appliedTags.includes('Pending')) {
+        if (!thread.appliedTags.includes(pendingTag.id)) {
           continue;
         }
         let reminder = `<@&${pingId}> Take a look at this thread, it's been inactive for a while :dread:`;
