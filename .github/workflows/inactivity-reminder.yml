@@ -23,3 +23,12 @@ jobs:
         env:
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
         run: pnpm start
+      - name: Touch boob (haha I am funny)
+        run: mkdir boob && touch boob/boob
+      - name: Deploy (this is to prevent GitHub from disabling this job)
+        uses: JamesIves/github-pages-deploy-action@4.1.3
+        with:
+          branch: gh-pages
+          folder: boob
+          commit-message: Deploy
+          single-commit: true
