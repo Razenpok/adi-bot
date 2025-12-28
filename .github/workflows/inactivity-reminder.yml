@@ -5,6 +5,9 @@ on:
     - cron: '0 0 * * *'   # every day at midnight UTC
   workflow_dispatch:      # also allow manual runs
 
+permissions:
+  contents: write
+
 jobs:
   send-reminders:
     runs-on: ubuntu-latest
