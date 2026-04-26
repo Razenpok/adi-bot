@@ -35,3 +35,4 @@ jobs:
           folder: boob
           commit-message: Deploy
           single-commit: true
+          target-folder: '.'
